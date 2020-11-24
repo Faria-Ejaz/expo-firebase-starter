@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "194818736492",
+    "firebase_url": "https://expo-claw.firebaseio.com",
+    "project_id": "expo-claw",
+    "storage_bucket": "expo-claw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194818736492:android:57ca0f3cd99501f41ef349",
+        "android_client_info": {
+          "package_name": "com.app.expo_claw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194818736492-autsb0f5f9icoros0j6v8ccpb2l021v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.expo_claw",
+            "certificate_hash": "47859078b03419ba753dcdc3913438a89a45386b"
+          }
+        },
+        {
+          "client_id": "194818736492-nppjbm8f646ti2dr19hsao48kvouqh07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoO3eQ4MIggQ18vYZoloKFtrLgc2_-Yng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194818736492-nppjbm8f646ti2dr19hsao48kvouqh07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

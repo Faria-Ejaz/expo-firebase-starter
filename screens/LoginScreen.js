@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import * as Yup from 'yup';
+import * as Facebook from 'expo-facebook';
 
 import Colors from '../utils/colors';
 import SafeView from '../components/SafeView';
@@ -50,6 +51,61 @@ export default function LoginScreen({ navigation }) {
     }
   }
 
+//  async function facebookLogIn(){
+//     try {
+//       const {
+//         type,
+//         token,
+//         expires,
+//         permissions,
+//         declinedPermissions,
+//       } = await Facebook.logInWithReadPermissionsAsync('897285013968583', {
+//         permissions: ['public_profile'],
+//       });
+//       if (type === 'success') {
+//         // Get the user's name using Facebook's Graph API
+//         fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,picture.height(500)`)
+//           .then(response => response.json())
+//           .then(data => {
+//             setLoggedinStatus(true);
+//             setUserData(data);
+//           })
+//           .catch(e => console.log(e))
+//       } else {
+//         // type === 'cancel'
+//       }
+//     } catch ({ message }) {
+//       alert(`Facebook Login Error: ${message}`);
+//     }
+//   }
+
+  async function facebookLogIn() {
+    try {
+      await Facebook.initializeAsync({
+        appId: '398247971293239',
+      });
+      const {
+        type,
+        token,
+        expirationDate,
+        permissions,
+        declinedPermissions,
+      } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile'],
+      });
+      if (type === 'success') {
+        // Get the user's name using Facebook's Graph API
+        const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+        // console.log("facebookLogIn -> response", response)
+        // Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+      } else {
+        // type === 'cancel'
+      }
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  }
+
   return (
     <SafeView style={styles.container}>
       <Form
@@ -83,6 +139,9 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.footerButtonContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
           <Text style={styles.forgotPasswordButtonText}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.forgotPasswordButtonText} onPress={() => facebookLogIn()}>
+          <Text style={{ color: "#fff" }}>Login with Facebook</Text>
         </TouchableOpacity>
       </View>
       <IconButton
